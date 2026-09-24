@@ -1,0 +1,30 @@
+[project]
+name = "cifar10-pytorch"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi>=0.141.1",
+    "pillow>=12.3.0",
+    "python-multipart>=0.0.32",
+    "torch>=2.14.0",
+    "torchvision>=0.29.0",
+    "uvicorn>=0.53.0",
+]
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu130" }
+torchvision = { index = "pytorch-cu130" }
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
+
+[project.scripts]
+cifar10-pytorch = "cifar10_pytorch:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
